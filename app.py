@@ -28,18 +28,7 @@ print("\n")
 
 app = Flask(__name__)
 # Configure CORS for Edge extension
-CORS(app, resources={
-    r"/api/*": {
-        "origins": [
-            "chrome-extension://*",  # Chrome extensions
-            "edge-extension://*",    # Edge extensions
-            "moz-extension://*"      # Firefox extensions
-        ],
-        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"],
-        "supports_credentials": True
-    }
-})
+CORS(app, origins=["https://docs.google.com"], supports_credentials=True)
 
 # JWT Configuration
 JWT_SECRET = os.getenv('JWT_SECRET', 'your-secret-key')  # Change this in production
